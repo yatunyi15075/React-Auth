@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from '../config.js';
+import UserModel from '../models/userModel.js';
 
-const db = config.db;
 const jwtSecret = config.jwtSecret;
 
 // Register User
@@ -11,9 +11,9 @@ export const registerUser = async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const [result] = await db.execute('INSERT INTO users (email, password) VALUES (?, ?)', [email, hashedPassword]);
+    const userId = await UserModel.createUser(email, hashedPassword);
 
-    res.status(201).json({ message: 'User registered successfully', userId: result.insertId });
+    res.status(201).json({ message: 'User registered successfully', userId });
   } catch (error) {
     res.status(500).json({ error: 'User registration failed', details: error.message });
   }
@@ -24,8 +24,7 @@ export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const [rows] = await db.execute('SELECT * FROM users WHERE email = ?', [email]);
-    const user = rows[0];
+    const user = await UserModel.getUserByEmail(email);
 
     if (!user) {
       return res.status(404).json({ error: 'User not found' });

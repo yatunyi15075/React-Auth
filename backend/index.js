@@ -1,15 +1,17 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import userRouter from './routers/userRouter.js';
 import config from './config.js';
-import userRoutes from './routes/userRoutes.js';
+
+dotenv.config();
 
 const app = express();
-
-// Middleware
 app.use(express.json());
 
-// Routes
-app.use('/api/users', userRoutes);
+app.use('/api/users', userRouter);
 
-// Start server
-const PORT = config.serverPort;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const PORT = config.port;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
