@@ -13,12 +13,17 @@ import {
   SocialButtons,
   SocialButton,
 } from '../styles/LoginStyles';
+import bgvideo from "../assets/bgvideo.mp4"
+import logo from "../assets/logo.png";
 
 const Login = () => {
   return (
     <Container>
+      <video autoPlay muted loop id="bgvideo">
+        <source src={bgvideo} type="video/mp4" />
+      </video>
       <LoginBox>
-        <Logo src="/your-logo.png" alt="Your logo" />
+        <Logo src={logo} alt="Your logo" />
         <Title>Login</Title>
         <Form>
           <Input type="email" placeholder="Email address" required />

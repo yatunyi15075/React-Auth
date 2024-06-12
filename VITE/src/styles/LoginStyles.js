@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
+ position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,6 +12,10 @@ export const Container = styled.div`
 `;
 
 export const LoginBox = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   max-width: 400px;
   padding: 32px;
