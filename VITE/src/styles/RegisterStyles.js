@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,6 +11,10 @@ export const Container = styled.div`
 `;
 
 export const RegisterBox = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   max-width: 400px;
   padding: 32px;
@@ -77,5 +82,67 @@ export const Link = styled.a`
 
   &:hover {
     text-decoration: underline;
+  }
+`;
+
+
+export const StyledLink = styled(Link)`
+  color: #2563eb;
+  font-size: 14px;
+  text-align: center;
+  display: block;
+  margin-top: 8px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const Divider = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #d1d5db;
+  }
+
+  &::before {
+    margin-right: 8px;
+  }
+
+  &::after {
+    margin-left: 8px;
+  }
+`;
+
+export const SocialButtons = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const SocialButton = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  flex: 1;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
   }
 `;

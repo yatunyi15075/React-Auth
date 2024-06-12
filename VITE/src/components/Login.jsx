@@ -19,9 +19,10 @@ import logo from "../assets/logo.png";
 const Login = () => {
   return (
     <Container>
-      <video autoPlay muted loop id="bgvideo">
-        <source src={bgvideo} type="video/mp4" />
-      </video>
+<video autoPlay muted loop id="bgvideo" style={{ width: '100%',  maxWidth: '100%', maxHeight: '100%' }}>
+  <source src={bgvideo} type="video/mp4" />
+</video>
+
       <LoginBox>
         <Logo src={logo} alt="Your logo" />
         <Title>Login</Title>
