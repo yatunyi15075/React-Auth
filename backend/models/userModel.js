@@ -1,9 +1,11 @@
 // userModel.js
+
 import db from '../config.js';
+import bcrypt from 'bcryptjs';
 
 // Function to create a new user
-export const createUser = async (email, hashedPassword) => {
-  const [result] = await db.execute('INSERT INTO users (email, password) VALUES (?, ?)', [email, hashedPassword]);
+export const createUser = async (fullName, email, hashedPassword) => { // Updated parameter to use hashedPassword
+  const [result] = await db.execute('INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)', [fullName, email, hashedPassword]);
   return result.insertId;
 };
 

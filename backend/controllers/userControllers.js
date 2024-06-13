@@ -1,4 +1,5 @@
 // userControllers.js
+
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from '../config.js';
@@ -8,19 +9,23 @@ const jwtSecret = config.jwtSecret;
 
 // Register User
 export const registerUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { fullName, email, password } = req.body;
 
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const userId = await UserModel.createUser(email, hashedPassword);
+    const hashedPassword = await bcrypt.hash(password, 10); // Ensure hashing password correctly
+    console.log('Hashed Password:', hashedPassword); // Debugging: Log hashed password
+
+    const userId = await UserModel.createUser(fullName, email, hashedPassword); // Use hashedPassword here
+    console.log('User ID:', userId); // Debugging: Log user ID returned from createUser
 
     res.status(201).json({ message: 'User registered successfully', userId });
   } catch (error) {
+    console.error('Registration Error:', error); // Debugging: Log registration error
     res.status(500).json({ error: 'User registration failed', details: error.message });
   }
 };
 
-// Login User
+// Login User (remains unchanged)
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -41,6 +46,7 @@ export const loginUser = async (req, res) => {
 
     res.status(200).json({ message: 'Login successful', token });
   } catch (error) {
+    console.error('Login Error:', error); // Debugging: Log login error
     res.status(500).json({ error: 'Login failed', details: error.message });
   }
-};
+};  
