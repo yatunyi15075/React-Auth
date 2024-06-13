@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Container,
   RegisterBox,
@@ -30,14 +32,17 @@ const Register = () => {
         email,
         password,
       });
+      toast.success('Registered successfully!');
       console.log(response.data); // Handle the response as needed
     } catch (error) {
+      toast.error('Failed to register. Please try again.');
       console.error(error.response.data);
     }
   };
 
   return (
     <Container>
+      <ToastContainer />
       <video autoPlay muted loop id="bgvideo" style={{ width: '100%', maxWidth: '100%', maxHeight: '100%' }}>
         <source src={bgvideo} type="video/mp4" />
       </video>

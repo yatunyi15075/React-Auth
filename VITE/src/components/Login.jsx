@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Container,
   LoginBox,
@@ -28,15 +30,21 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
       console.log(response.data); // Handle the response as needed
-      
+
       // Store the JWT token in local storage
       localStorage.setItem('token', response.data.token);
+
+      // Display success toast message
+      toast.success('Logged in successfully!');
 
       // Redirect to the home page or dashboard
       navigate('/dashboard');
     } catch (error) {
       console.error(error.response.data);
       setError(error.response.data.error);
+
+      // Display error toast message
+      toast.error('Failed to login. Please check your credentials.');
     }
   };
 
@@ -44,6 +52,7 @@ const Login = () => {
 
   return (
     <Container>
+      <ToastContainer />
       <video autoPlay muted loop id="bgvideo" style={{ width: '100%', maxWidth: '100%', maxHeight: '100%' }}>
         <source src={bgvideo} type="video/mp4" />
       </video>
