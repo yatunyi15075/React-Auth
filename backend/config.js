@@ -11,11 +11,11 @@ const db = mysql.createPool({
   database: process.env.DATABASE_NAME,
 });
 
-// Connect to the database
 db.getConnection()
   .then(connection => {
     console.log('Connected to the database.');
-    connection.release();
+    console.log('Database Object:', db); // Debugging: Log the db object
+    connection.release();  
   })
   .catch(error => {
     console.error('Error connecting to the database:', error.message);
