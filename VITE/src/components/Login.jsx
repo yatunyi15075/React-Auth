@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import {
   Container,
   LoginBox,
@@ -13,22 +14,33 @@ import {
   SocialButtons,
   SocialButton,
 } from '../styles/LoginStyles';
-import bgvideo from "../assets/bgvideo.mp4"
+import bgvideo from "../assets/bgvideo.mp4";
 import logo from "../assets/logo.png";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
       console.log(response.data); // Handle the response as needed
+      
+      // Store the JWT token in local storage
+      localStorage.setItem('token', response.data.token);
+
+      // Redirect to the home page or dashboard
+      navigate('/dashboard');
     } catch (error) {
       console.error(error.response.data);
+      setError(error.response.data.error);
     }
   };
+
+  console.log('Rendering Login component'); // Debugging line
 
   return (
     <Container>
@@ -44,6 +56,7 @@ const Login = () => {
           <StyledLink to="#">Forgot your password?</StyledLink>
           <Button type="submit">Sign in</Button>
         </Form>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <Divider>or continue with</Divider>
         <SocialButtons>
           <SocialButton href="#">

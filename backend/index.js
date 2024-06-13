@@ -1,5 +1,5 @@
-// index.js
 import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import router from './routers/userRouter.js';
 import config from './config.js';
@@ -7,7 +7,9 @@ import config from './config.js';
 dotenv.config();
 
 const app = express();
-app.use(express.json());  // This line is critical for parsing JSON bodies
+app.use(express.json());
+app.use(cors()); //
+
 
 // Middleware to log requests
 app.use((req, res, next) => {
@@ -23,4 +25,4 @@ const PORT = config.port;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});
+})
