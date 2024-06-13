@@ -1,7 +1,8 @@
+// userControllers.js
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from '../config.js';
-import UserModel from '../models/userModel.js';
+import * as UserModel from '../models/userModel.js';
 
 const jwtSecret = config.jwtSecret;
 

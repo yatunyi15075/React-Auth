@@ -1,5 +1,5 @@
-// src/components/Login.jsx
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import {
   Container,
   LoginBox,
@@ -17,18 +17,30 @@ import bgvideo from "../assets/bgvideo.mp4"
 import logo from "../assets/logo.png";
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      console.log(response.data); // Handle the response as needed
+    } catch (error) {
+      console.error(error.response.data);
+    }
+  };
+
   return (
     <Container>
-<video autoPlay muted loop id="bgvideo" style={{ width: '100%',  maxWidth: '100%', maxHeight: '100%' }}>
-  <source src={bgvideo} type="video/mp4" />
-</video>
-
+      <video autoPlay muted loop id="bgvideo" style={{ width: '100%', maxWidth: '100%', maxHeight: '100%' }}>
+        <source src={bgvideo} type="video/mp4" />
+      </video>
       <LoginBox>
         <Logo src={logo} alt="Your logo" />
         <Title>Login</Title>
-        <Form>
-          <Input type="email" placeholder="Email address" required />
-          <Input type="password" placeholder="Password" required />
+        <Form onSubmit={handleSubmit}>
+          <Input type="email" placeholder="Email address" required value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Input type="password" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)} />
           <StyledLink to="#">Forgot your password?</StyledLink>
           <Button type="submit">Sign in</Button>
         </Form>
