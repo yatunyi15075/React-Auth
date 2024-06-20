@@ -4,6 +4,17 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+
+//Put this data on the .env based on Your DB 
+// DATABASE_HOST= localhost
+
+// DATABASE_USER= root
+
+// DATABASE_PASSWORD=
+
+// DATABASE_NAME=auth
+
+ 
 const db = mysql.createPool({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
