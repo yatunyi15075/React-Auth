@@ -1,8 +1,9 @@
 // src/styles/RegisterStyles.js
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,24 +68,16 @@ export const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
   text-align: center;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: #1d4ed8;
   }
 `;
-
-export const Link = styled.a`
-  color: #2563eb;
-  font-size: 14px;
-  text-align: center;
-  display: block;
-  margin-top: 8px;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 
 export const StyledLink = styled(Link)`
   color: #2563eb;
@@ -122,10 +115,11 @@ export const Divider = styled.div`
 
 export const SocialButtons = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 8px;
 `;
 
-export const SocialButton = styled.a`
+export const SocialButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -133,9 +127,11 @@ export const SocialButton = styled.a`
   background-color: white;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  flex: 1;
   cursor: pointer;
   text-align: center;
+  width: 100%;
+  height: 48px;
+  transition: background-color 0.3s ease;
 
   &:hover {
     background-color: #f3f4f6;
@@ -144,5 +140,6 @@ export const SocialButton = styled.a`
   svg {
     width: 24px;
     height: 24px;
+    margin-right: 8px;
   }
 `;

@@ -1,9 +1,8 @@
-// src/styles/LoginStyles.js
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
- position: relative;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,6 +67,11 @@ export const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
   text-align: center;
+  width: 100%; /* Ensure button takes full width */
+  height: 48px; /* Set desired height */
+  display: flex; /* Add display flex for icon alignment */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
 
   &:hover {
     background-color: #1d4ed8;
@@ -110,10 +114,11 @@ export const Divider = styled.div`
 
 export const SocialButtons = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 8px;
 `;
 
-export const SocialButton = styled.a`
+export const SocialButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,9 +126,11 @@ export const SocialButton = styled.a`
   background-color: white;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  flex: 1;
   cursor: pointer;
   text-align: center;
+  width: 100%; /* Ensure button takes full width */
+  height: 48px; /* Set desired height */
+  transition: background-color 0.3s ease;
 
   &:hover {
     background-color: #f3f4f6;
@@ -132,5 +139,6 @@ export const SocialButton = styled.a`
   svg {
     width: 24px;
     height: 24px;
+    margin-right: 8px; /* Adjust icon margin */
   }
 `;

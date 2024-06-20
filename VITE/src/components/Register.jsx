@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import { GoogleLogin } from '@react-oauth/google';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   Container,
@@ -11,7 +13,6 @@ import {
   Form,
   Input,
   Button,
-  Link,
   StyledLink,
   Divider,
   SocialButtons,
@@ -51,6 +52,16 @@ const Register = () => {
     toast.error('Google Sign-In was unsuccessful. Please try again.');
   };
 
+  const handleGithubSuccess = (response) => {
+    console.log(response);
+    // Handle the response and register the user using the GitHub account information
+  };
+
+  const handleGithubFailure = (error) => {
+    console.error(error);
+    toast.error('GitHub Sign-In was unsuccessful. Please try again.');
+  };
+
   return (
     <Container>
       <ToastContainer />
@@ -71,9 +82,14 @@ const Register = () => {
           <GoogleLogin
             onSuccess={handleGoogleSuccess}
             onFailure={handleGoogleFailure}
+            style={{ width: '100%', marginBottom: '10px' }}
           />
+          <SocialButton onClick={handleGithubSuccess}>
+            <FontAwesomeIcon icon={faGithub} style={{ marginRight: '8px' }} />
+            Sign in with GitHub
+          </SocialButton>
         </SocialButtons>
-        <Link href="/">Already have an account? Login</Link>
+        <StyledLink to="/">Already have an account? Login</StyledLink>
       </RegisterBox>
     </Container>
   );
