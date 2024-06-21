@@ -11,17 +11,18 @@ export const Container = styled.div`
 `;
 
 export const LoginBox = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   width: 100%;
   max-width: 400px;
   padding: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent for glossy effect */
+  backdrop-filter: blur(10px); /* Blurring the background for glossy effect */
   border-radius: 16px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 600px) {
+    padding: 20px;
+  }
 `;
 
 export const Logo = styled.img`
@@ -29,6 +30,10 @@ export const Logo = styled.img`
   margin: 0 auto 16px;
   width: 96px;
   height: 96px;
+
+  @media (max-width: 600px) {
+    width: 80px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -37,6 +42,10 @@ export const Title = styled.h2`
   text-align: center;
   margin-bottom: 16px;
   color: white;
+
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const Form = styled.form`
@@ -56,6 +65,10 @@ export const Input = styled.input`
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
   }
+
+  @media (max-width: 600px) {
+    padding: 10px;
+  }
 `;
 
 export const Button = styled.button`
@@ -67,14 +80,19 @@ export const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
   text-align: center;
-  width: 100%; /* Ensure button takes full width */
-  height: 48px; /* Set desired height */
-  display: flex; /* Add display flex for icon alignment */
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: #1d4ed8;
+  }
+
+  @media (max-width: 600px) {
+    padding: 10px;
+    font-size: 1rem;
   }
 `;
 
@@ -110,12 +128,27 @@ export const Divider = styled.div`
   &::after {
     margin-left: 8px;
   }
+
+  @media (max-width: 600px) {
+    margin: 15px 0;
+    font-size: 0.8rem;
+
+    &::before,
+    &::after {
+      width: 30%;
+    }
+  }
 `;
 
 export const SocialButtons = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export const SocialButton = styled.button`
@@ -128,8 +161,8 @@ export const SocialButton = styled.button`
   border-radius: 8px;
   cursor: pointer;
   text-align: center;
-  width: 100%; /* Ensure button takes full width */
-  height: 48px; /* Set desired height */
+  width: 100%;
+  height: 48px;
   transition: background-color 0.3s ease;
 
   &:hover {
@@ -139,6 +172,12 @@ export const SocialButton = styled.button`
   svg {
     width: 24px;
     height: 24px;
-    margin-right: 8px; /* Adjust icon margin */
+    margin-right: 8px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
   }
 `;

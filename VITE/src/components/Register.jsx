@@ -65,7 +65,7 @@ const Register = () => {
   return (
     <Container>
       <ToastContainer />
-      <video autoPlay muted loop id="bgvideo" style={{ width: '100%', maxWidth: '100%', maxHeight: '100%' }}>
+      <video autoPlay muted loop id="bgvideo" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: '0', left: '0' }}>
         <source src={bgvideo} type="video/mp4" />
       </video>
       <RegisterBox>
@@ -85,7 +85,7 @@ const Register = () => {
             style={{ width: '100%', marginBottom: '10px' }}
           />
           <SocialButton onClick={handleGithubSuccess}>
-            <FontAwesomeIcon icon={faGithub} style={{ marginRight: '8px' }} />
+            <FontAwesomeIcon icon={faGithub} size="2x" />
             Sign in with GitHub
           </SocialButton>
         </SocialButtons>

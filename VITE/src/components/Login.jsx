@@ -63,7 +63,7 @@ const Login = () => {
   return (
     <Container>
       <ToastContainer />
-      <video autoPlay muted loop id="bgvideo" style={{ width: '100%', maxWidth: '100%', maxHeight: '100%' }}>
+      <video autoPlay muted loop id="bgvideo" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: '0', left: '0' }}>
         <source src={bgvideo} type="video/mp4" />
       </video>
       <LoginBox>
@@ -82,11 +82,12 @@ const Login = () => {
             style={{ width: '100%', marginBottom: '10px' }}
           />
           <SocialButton onClick={handleGithubSuccess}>
-            <FontAwesomeIcon icon={faGithub} style={{ marginRight: '8px' }} />
-            Sign in with GitHub
+            <FontAwesomeIcon icon={faGithub} size="2x" />
           </SocialButton>
         </SocialButtons>
-        <StyledLink to="/register">Don't have an account? Register</StyledLink>
+        <Divider>
+          <StyledLink to="/register">Create an account</StyledLink>
+        </Divider>
       </LoginBox>
     </Container>
   );

@@ -23,6 +23,10 @@ export const RegisterBox = styled.div`
   backdrop-filter: blur(10px);
   border-radius: 16px;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 600px) {
+    padding: 20px;
+  }
 `;
 
 export const Logo = styled.img`
@@ -30,6 +34,11 @@ export const Logo = styled.img`
   margin: 0 auto 16px;
   width: 96px;
   height: 96px;
+
+  @media (max-width: 600px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -38,6 +47,10 @@ export const Title = styled.h2`
   text-align: center;
   margin-bottom: 16px;
   color: white;
+
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const Form = styled.form`
@@ -56,6 +69,10 @@ export const Input = styled.input`
     outline: none;
     border-color: #3b82f6;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  }
+
+  @media (max-width: 600px) {
+    padding: 10px;
   }
 `;
 
@@ -76,6 +93,11 @@ export const Button = styled.button`
 
   &:hover {
     background-color: #1d4ed8;
+  }
+
+  @media (max-width: 600px) {
+    padding: 10px;
+    font-size: 1rem;
   }
 `;
 
@@ -111,6 +133,16 @@ export const Divider = styled.div`
   &::after {
     margin-left: 8px;
   }
+
+  @media (max-width: 600px) {
+    margin: 15px 0;
+    font-size: 0.8rem;
+
+    &:before,
+    &:after {
+      width: 30%;
+    }
+  }
 `;
 
 export const SocialButtons = styled.div`
@@ -141,5 +173,10 @@ export const SocialButton = styled.button`
     width: 24px;
     height: 24px;
     margin-right: 8px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 10px;
+    font-size: 1rem;
   }
 `;
