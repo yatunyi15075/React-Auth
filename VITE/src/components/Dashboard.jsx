@@ -16,7 +16,7 @@ import {
   TutorialLink,
 } from '../styles/DashboardStyles';
 
-const Dashboard = () => {
+const Dashboard = () => { 
   const user = {
     fullName: "John Doe",
     email: "john.doe@example.com"

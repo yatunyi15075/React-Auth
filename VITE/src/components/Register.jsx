@@ -42,6 +42,7 @@ const Register = () => {
     }
   };
 
+
   const handleGoogleSuccess = (response) => {
     console.log(response);
     // Handle the response and register the user using the Google account information
@@ -65,7 +66,8 @@ const Register = () => {
   return (
     <Container>
       <ToastContainer />
-      <video autoPlay muted loop id="bgvideo" style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: '0', left: '0' }}>
+      <video autoPlay muted loop id="bgvideo" style=
+      {{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: '0', left: '0' }}>
         <source src={bgvideo} type="video/mp4" />
       </video>
       <RegisterBox>

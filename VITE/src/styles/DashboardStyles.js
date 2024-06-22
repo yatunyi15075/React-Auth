@@ -144,7 +144,7 @@ export const TutorialsTitle = styled.h2`
   color: #007BFF;
 
   @media (max-width: 600px) {
-    font-size: 1.5rem;
+    font-size: 1.5rem;  
   }
 `;
 
